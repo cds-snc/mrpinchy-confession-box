@@ -1,6 +1,12 @@
 import React, { Component } from "react"
 import Head from "next/head"
 import Header from "../components/header"
+import Container from "../components/container"
+import { css } from "react-emotion"
+
+const Text = css`
+  color: #e86502;
+`
 
 class App extends Component {
   render() {
@@ -12,7 +18,10 @@ class App extends Component {
             rel="stylesheet"
           />
         </Head>
-        <Header />
+        <Container>
+          <Header />
+          <div className={Text}>Hey what does this text look like?</div>
+        </Container>
       </div>
     )
   }
