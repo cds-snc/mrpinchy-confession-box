@@ -35,11 +35,32 @@ const formStyle = css`
 `
 
 class Form extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { value: "" }
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value })
+  }
+
+  handleSubmit(event) {
+    // eslint-disable-next-line no-console
+    console.log("Submit was pressed")
+    event.preventDefault()
+  }
   render() {
     return (
-      <form className={formStyle}>
+      <form className={formStyle} onSubmit={this.handleSubmit}>
         <label>
-          <textarea placeholder="Tell the friendly crustacean what's on your mind..." />
+          <textarea
+            placeholder="Tell the friendly crustacean what's on your mind..."
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
         </label>
         <br />
         <input type="submit" value="Submit" />

@@ -39,14 +39,14 @@ class SpeechBubble extends Component {
   render() {
     return (
       <div className={talkBubble}>
-        <div className={talkText}>{this.props.children}</div>
+        <div className={talkText}>{this.props.text}</div>
       </div>
     )
   }
 }
 
 SpeechBubble.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  text: PropTypes.string,
 }
 
 export default SpeechBubble

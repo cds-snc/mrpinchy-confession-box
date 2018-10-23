@@ -27,10 +27,10 @@ class App extends Component {
         <Container>
           <Header />
           <MrPinchy />
-          <SpeechBubble>
-            Hello! My name is Mr. Pinchy and I&apos;m here to listen to all your
-            confessions! Just type below 😊 🦀
-          </SpeechBubble>
+          <SpeechBubble
+            text="Hello! My name is Mr. Pinchy and I&apos;m here to listen to all your
+            confessions! Just type below 😊 🦀"
+          />
           <Form />
         </Container>
       </div>
