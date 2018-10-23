@@ -5,6 +5,7 @@ import Header from "../components/header"
 import Container from "../components/container"
 import MrPinchy from "../components/mrpinchy"
 import SpeechBubble from "../components/speechbubble"
+import Form from "../components/form"
 
 injectGlobal`
     body {
@@ -27,9 +28,10 @@ class App extends Component {
           <Header />
           <MrPinchy />
           <SpeechBubble>
-            Hello! My name is Mr. Pinchy, and I&apos;m here to listen to all
-            your confessions! Just type below 😊 🦀
+            Hello! My name is Mr. Pinchy and I&apos;m here to listen to all your
+            confessions! Just type below 😊 🦀
           </SpeechBubble>
+          <Form />
         </Container>
       </div>
     )
