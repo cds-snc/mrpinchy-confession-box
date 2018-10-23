@@ -4,7 +4,7 @@ import { css } from "react-emotion"
 const HeaderStyle = css`
   font-family: "Lobster Two";
   color: #ef762f;
-  text-shadow: 4px 4px #e5e1de;
+  text-shadow: 4px 4px lightyellow;
   font-size: 4rem;
 `
 const Header = () => (
