@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { css } from "react-emotion"
+import Router from "next/router"
 
 const formStyle = css`
   margin-top: 3rem;
@@ -49,7 +50,10 @@ class Form extends Component {
 
   handleSubmit(event) {
     // eslint-disable-next-line no-console
-    console.log("Submit was pressed")
+    console.log(this.state.value)
+    Router.push({
+      pathname: "/thankyou",
+    })
     event.preventDefault()
   }
   render() {
