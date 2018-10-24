@@ -43,7 +43,7 @@ class Form extends Component {
     super(props)
     this.state = {
       value: "",
-      formError: "",
+      formError: "empty-message",
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -52,66 +52,45 @@ class Form extends Component {
 
   handleChange(event) {
     this.setState({ value: event.target.value })
-  }
 
-  handleSubmit(event) {
-    // empty form
-    if (!this.state.value) {
+    // validate form input, checking for content, script tags, profanity & actual words
+    if (!event.target.value) {
       // eslint-disable-next-line no-console
-      console.error("COnfession is empty")
+      console.error("Confession is empty")
       this.setState({ formError: "empty-message" })
-    }
-
-    // script tags
-    if (
-      this.state.value.includes("<script>") ||
-      this.state.value.includes("</script>")
+    } else if (
+      event.target.value.includes("<script>") ||
+      event.target.value.includes("</script>")
     ) {
       // eslint-disable-next-line no-console
       console.error("Confession contains script tags")
       this.setState({ formError: "script-tag" })
-    }
-
-    // not words
-
-    if (this.state.value.match(/^\d+$/)) {
+    } else if (event.target.value.match(/^\d+$/)) {
       // eslint-disable-next-line no-console
       console.error("Confession only contains numbers")
       this.setState({ formError: "no-words" })
-    }
-
-    // swear words
-    if (filter.isProfane(this.state.value)) {
+    } else if (filter.isProfane(event.target.value)) {
       // eslint-disable-next-line no-console
-      console.error("Confession contains profanity")
+      console.error("Detected profanity in typing")
       this.setState({ formError: "profanity" })
+    } else {
+      this.setState({ formError: "none" })
     }
+  }
 
-    // it's fine! Submit
-
-    // if (!this.state.value) {
-    //   // eslint-disable-next-line no-console
-    //   console.error("Confession cannot be empty")
-    //   //   Router.push({
-    //   //     pathname: "/error",
-    //   //     query: { error: "empty-message" },
-    //   //   })
-    // }
-
-    // // if (this.state.value.match(/[< | >]*/)) {
-    // //   // eslint-disable-next-line no-console
-    // //   console.error("Invalid characters")
-    // //   Router.push({
-    // //     pathname: "/error",
-    // //     query: { error: "invalid-characters" },
-    // //   })
-    // // }
-
-    // // eslint-disable-next-line no-console
-    // console.log(this.state.value)
-    // Router.push({
-    //   pathname: "/thankyou",
-    // })
+  handleSubmit(event) {
+    if (this.state.formError != "none") {
+      Router.push({
+        pathname: "/error",
+        query: { error: this.state.formError },
+      })
+    } else {
+      // eslint-disable-next-line no-console
+      console.log("Confession submitted: " + this.state.value)
+      Router.push({
+        pathname: "/thankyou",
+      })
+    }
 
     event.preventDefault()
   }

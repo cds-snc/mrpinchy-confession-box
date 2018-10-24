@@ -7,6 +7,7 @@ import Container from "../components/container"
 import MrPinchy from "../components/mrpinchy"
 import SpeechBubble from "../components/speechbubble"
 import Router from "next/router"
+import PropTypes from "prop-types"
 
 injectGlobal`
     body {
@@ -38,14 +39,18 @@ class Error extends Component {
   }
 
   errorMessage() {
-    if (this.props.error == "invalid-characters")
+    if (this.props.error == "script-tag")
       return "Hmm... that message doesn't seem right. Did you use a weird symbol? How about you try again 😞 🦀 "
     if (this.props.error == "empty-message")
       return "Oh no, it looks like your message is empty! How about you try again 😞 🦀 "
-    return "I am testing all the things"
+    if (this.props.error == "profanity")
+      return "Why are you swearing at me?? I'm just a friendly crustacean! How about you try again 😞 🦀 "
+    if (this.props.error == "no-words")
+      return "Are you sure you wrote me a message, because it looks just like numbers to me. How about you try again 😞 🦀 "
+
+    return "Hmm, it looks like something went wrong. How about you try again 😞 🦀 "
   }
 
-  //"Hmm... that message doesn't seem right. Did you use a weird symbol? How about you try again 😞 🦀 "
   handleClick() {
     //eslint-disable-next-line no-console
     console.log("Clicked the 'Try again' button")
@@ -76,6 +81,10 @@ class Error extends Component {
       </div>
     )
   }
+}
+
+Error.propTypes = {
+  error: PropTypes.string,
 }
 
 export default Error
