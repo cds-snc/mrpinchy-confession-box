@@ -30,10 +30,24 @@ class Error extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
+    this.errorMessage = this.errorMessage.bind(this)
   }
 
+  static getInitialProps({ query: { error } }) {
+    return { error }
+  }
+
+  errorMessage() {
+    if (this.props.error == "invalid-characters")
+      return "Hmm... that message doesn't seem right. Did you use a weird symbol? How about you try again 😞 🦀 "
+    if (this.props.error == "empty-message")
+      return "Oh no, it looks like your message is empty! How about you try again 😞 🦀 "
+    return "I am testing all the things"
+  }
+
+  //"Hmm... that message doesn't seem right. Did you use a weird symbol? How about you try again 😞 🦀 "
   handleClick() {
-    // eslint-disable-next-line no-console
+    //eslint-disable-next-line no-console
     console.log("Clicked the 'Try again' button")
     Router.push({
       pathname: "/",
@@ -52,7 +66,7 @@ class Error extends Component {
         <Container>
           <Header />
           <MrPinchy />
-          <SpeechBubble text="Hmm... that message doesn't seem right. Did you use a weird symbol? How about you try again 😞 🦀 " />
+          <SpeechBubble text={this.errorMessage()} />
           <br />
           <br />
           <button className={buttonStyle} onClick={this.handleClick}>

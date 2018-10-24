@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import { css } from "react-emotion"
 import Router from "next/router"
+import Filter from "bad-words"
+
+var filter = new Filter()
 
 const formStyle = css`
   margin-top: 3rem;
@@ -38,7 +41,10 @@ const formStyle = css`
 class Form extends Component {
   constructor(props) {
     super(props)
-    this.state = { value: "" }
+    this.state = {
+      value: "",
+      formError: "",
+    }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -49,11 +55,64 @@ class Form extends Component {
   }
 
   handleSubmit(event) {
-    // eslint-disable-next-line no-console
-    console.log(this.state.value)
-    Router.push({
-      pathname: "/thankyou",
-    })
+    // empty form
+    if (!this.state.value) {
+      // eslint-disable-next-line no-console
+      console.error("COnfession is empty")
+      this.setState({ formError: "empty-message" })
+    }
+
+    // script tags
+    if (
+      this.state.value.includes("<script>") ||
+      this.state.value.includes("</script>")
+    ) {
+      // eslint-disable-next-line no-console
+      console.error("Confession contains script tags")
+      this.setState({ formError: "script-tag" })
+    }
+
+    // not words
+
+    if (this.state.value.match(/^\d+$/)) {
+      // eslint-disable-next-line no-console
+      console.error("Confession only contains numbers")
+      this.setState({ formError: "no-words" })
+    }
+
+    // swear words
+    if (filter.isProfane(this.state.value)) {
+      // eslint-disable-next-line no-console
+      console.error("Confession contains profanity")
+      this.setState({ formError: "profanity" })
+    }
+
+    // it's fine! Submit
+
+    // if (!this.state.value) {
+    //   // eslint-disable-next-line no-console
+    //   console.error("Confession cannot be empty")
+    //   //   Router.push({
+    //   //     pathname: "/error",
+    //   //     query: { error: "empty-message" },
+    //   //   })
+    // }
+
+    // // if (this.state.value.match(/[< | >]*/)) {
+    // //   // eslint-disable-next-line no-console
+    // //   console.error("Invalid characters")
+    // //   Router.push({
+    // //     pathname: "/error",
+    // //     query: { error: "invalid-characters" },
+    // //   })
+    // // }
+
+    // // eslint-disable-next-line no-console
+    // console.log(this.state.value)
+    // Router.push({
+    //   pathname: "/thankyou",
+    // })
+
     event.preventDefault()
   }
   render() {
