@@ -10,3 +10,5 @@ resources:
   - traefik-ingress.yaml
   - traefik-ingress-api.yaml
   - pv-claim.yaml
+  - pod-check-cluster-role-binding.yaml
+  - pod-check-cluster-role.yaml
