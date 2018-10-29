@@ -1,18 +1,18 @@
-import React, { Component } from "react"
-import { injectGlobal } from "emotion"
-import Head from "next/head"
-import Header from "../components/header"
-import Container from "../components/container"
-import MrPinchy from "../components/mrpinchy"
-import SpeechBubble from "../components/speechbubble"
-import Form from "../components/form"
+import React, { Component } from "react";
+import { injectGlobal } from "emotion";
+import Head from "next/head";
+import Header from "../components/header";
+import Container from "../components/container";
+import MrPinchy from "../components/mrpinchy";
+import SpeechBubble from "../components/speechbubble";
+import Form from "../components/form";
 
 injectGlobal`
     body {
         background-color: lightblue;
         font-family: SourceSans, Helvetica, Arial, sans-serif;
     }
-`
+`;
 
 class App extends Component {
   render() {
@@ -34,8 +34,8 @@ class App extends Component {
           <Form />
         </Container>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
