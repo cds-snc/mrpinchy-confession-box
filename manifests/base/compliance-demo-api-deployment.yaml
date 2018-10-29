@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  generation: 1
+  labels:
+    app: compliance-api
+  name: compliance-api
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: compliance-api
+  template:
+    metadata:
+      labels:
+        app: compliance-api
+    spec:
+      containers:
+      - image: cdssnc/compliance-api
+        imagePullPolicy: Always
+        name: compliance-api
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+          - name: compliance-checks
+            mountPath: /checks
+        env:
+          - name: CHECKS_PATH
+            value: /checks
+          - name: DEFINITIONS_URL
+            value: https://raw.githubusercontent.com/cds-snc/ITSG-33-definitions/master/ITSG-33a.yaml
+          - name: CERTIFICATION_URL
+            value: https://raw.githubusercontent.com/cds-snc/ITSG-33-baselines/master/light.yaml
+      initContainers:
+        - image: 'cdssnc/url-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'url-check-compliance-sa-11-1'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/url-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Source code'
+            - name: DESCRIPTION
+              value: 'The application uses an ESLint file to do so static code analysis.'
+            - name: SATISFIES
+              value: 'SA-11 (1)'
+            - name: URL
+              value: 'https://github.com/cds-snc/mrpinchy-confession-box/blob/master/.eslintrc.json'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+      volumes:
+      - name: compliance-checks
+        hostPath:
+          path: /checks
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}

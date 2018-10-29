@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/rewrite-target: /compliance
+    traefik.ingress.kubernetes.io/preserve-host: "false"
+  name: traefik-ingress-crystal
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /compliance
+        backend:
+          serviceName: compliance-api
+          servicePort: 3000
