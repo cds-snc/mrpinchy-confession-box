@@ -5,7 +5,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/rewrite-target: /compliance
     traefik.ingress.kubernetes.io/preserve-host: "false"
-  name: traefik-ingress-crystal
+  name: traefik-ingress-api
 spec:
   rules:
   - http:
