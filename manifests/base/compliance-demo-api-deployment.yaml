@@ -35,6 +35,23 @@ spec:
           - name: CERTIFICATION_URL
             value: https://raw.githubusercontent.com/cds-snc/ITSG-33-baselines/master/light.yaml
       initContainers:
+        - image: 'cdssnc/pod-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'pod-check-compliance-au-2-apiserver'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/pod-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Infrastructure'
+            - name: DESCRIPTION
+              value: 'The Kubernetes API Server Pod logs all API requests that make infrastructure changes.'
+            - name: SATISFIES
+              value: 'AU-2'
+            - name: NEEDLE
+              value: 'kube-apiserver'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
         - image: 'cdssnc/url-check-compliance:latest'
           imagePullPolicy: Always
           name: 'url-check-compliance-sa-11-1'
@@ -52,20 +69,20 @@ spec:
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks
-        - image: 'cdssnc/pod-check-compliance:latest'
+        - image: 'cdssnc/url-check-compliance:latest'
           imagePullPolicy: Always
-          name: 'pod-check-compliance-au-2-apiserver'
+          name: 'url-check-compliance-sa-11-1'
           env:
             - name: ORIGIN
-              value: 'cdssnc/pod-check-compliance:latest'
+              value: 'cdssnc/url-check-compliance:latest'
             - name: COMPONENT
-              value: 'Infrastructure'
+              value: 'Source code'
             - name: DESCRIPTION
-              value: 'The Kubernetes API Server Pod logs all API requests that make infrastructure changes.'
+              value: 'The application contains tests to validate inputs.'
             - name: SATISFIES
-              value: 'AU-2'
-            - name: NEEDLE
-              value: 'kube-apiserver'
+              value: 'SI-10'
+            - name: URL
+              value: 'https://github.com/cds-snc/mrpinchy-confession-box/blob/master/__tests__/form.test.js'
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks
