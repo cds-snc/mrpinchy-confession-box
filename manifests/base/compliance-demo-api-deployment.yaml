@@ -33,7 +33,7 @@ spec:
           - name: DEFINITIONS_URL
             value: https://raw.githubusercontent.com/cds-snc/ITSG-33-definitions/master/ITSG-33a.yaml
           - name: CERTIFICATION_URL
-            value: https://raw.githubusercontent.com/cds-snc/ITSG-33-baselines/master/light.yaml
+            value: https://raw.githubusercontent.com/cds-snc/ITSG-33-baselines/master/minimum-per-release.yaml
       initContainers:
         - image: 'cdssnc/pod-check-compliance:latest'
           imagePullPolicy: Always
@@ -66,6 +66,23 @@ spec:
               value: 'SA-11 (1)'
             - name: URL
               value: 'https://github.com/cds-snc/mrpinchy-confession-box/blob/master/.eslintrc.json'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+        - image: 'cdssnc/github-reviews-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'github-reviews-check-compliance-sa-11-4'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/github-reviews-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Infrastructure'
+            - name: DESCRIPTION
+              value: 'The application performs code review on its pull requests.'
+            - name: SATISFIES
+              value: 'SA-11 (4)'
+            - name: REPO_URL
+              value: 'https://github.com/cds-snc/mrpinchy-confession-box'
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks
