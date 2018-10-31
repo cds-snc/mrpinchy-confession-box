@@ -1,5 +1,4 @@
 resources:
-  - compliance-demo-api-deployment.yaml
   - compliance-demo-api-service.yaml
   - compliance-demo-frontend-deployment.yaml
   - compliance-demo-frontend-service.yaml
@@ -9,4 +8,3 @@ resources:
   - traefik-ingress-controller-service-account.yaml
   - traefik-ingress.yaml
   - traefik-ingress-api.yaml
-  - pv-claim.yaml
