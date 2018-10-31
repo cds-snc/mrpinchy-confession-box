@@ -32,6 +32,27 @@ class ThankYou extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
+  componentDidMount() {
+    this.logComment("Submission sent successfully")
+  }
+
+  logComment = comment => {
+    let payload = {
+      comment: comment,
+    }
+
+    fetch("/submitComment", {
+      body: JSON.stringify(payload),
+      cache: "no-cache",
+      headers: {
+        "content-type": "application/json",
+      },
+      method: "POST",
+    }).catch(err => {
+      throw err
+    })
+  }
+
   handleClick() {
     // eslint-disable-next-line no-console
     console.log("Clicked the 'Tell Mr. Pinchy more' button")

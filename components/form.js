@@ -50,41 +50,20 @@ class Form extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  logComment = comment => {
-    let payload = {
-      comment: comment,
-    }
-
-    fetch("/submitComment", {
-      body: JSON.stringify(payload),
-      cache: "no-cache",
-      headers: {
-        "content-type": "application/json",
-      },
-      method: "POST",
-    }).catch(err => {
-      throw err
-    })
-  }
-
   handleChange(event) {
     this.setState({ value: event.target.value })
 
     // validate form input, checking for content, script tags, profanity & actual words
     if (!event.target.value) {
-      //this.logComment("Confession is empty")
       this.setState({ formError: "empty-message" })
     } else if (
       event.target.value.includes("<script>") ||
       event.target.value.includes("</script>")
     ) {
-      //this.logComment("Confession contains script tags")
       this.setState({ formError: "script-tag" })
     } else if (event.target.value.match(/^\d+$/)) {
-      //this.logComment("Confession only contains numbers")
       this.setState({ formError: "no-words" })
     } else if (filter.isProfane(event.target.value)) {
-      //this.logComment("Detected profanity in typing")
       this.setState({ formError: "profanity" })
     } else {
       this.setState({ formError: "none" })
@@ -98,7 +77,6 @@ class Form extends Component {
         query: { error: this.state.formError },
       })
     } else {
-      //this.logComment("Confession submitted")
       Router.push({
         pathname: "/thankyou",
       })
