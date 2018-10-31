@@ -52,8 +52,6 @@ class Error extends Component {
   }
 
   handleClick() {
-    //eslint-disable-next-line no-console
-    console.log("Clicked the 'Try again' button")
     Router.push({
       pathname: "/",
     })
