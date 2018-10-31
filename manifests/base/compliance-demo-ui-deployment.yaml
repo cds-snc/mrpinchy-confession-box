@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  generation: 1
+  labels:
+    app: compliance-ui
+  name: compliance-ui
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: compliance-ui
+  template:
+    metadata:
+      labels:
+        app: compliance-ui
+    spec:
+      containers:
+      - image: cdssnc/compliance-ui
+        imagePullPolicy: Always
+        name: compliance-ui
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        env:
+          - name: API_URL
+            value: /compliance/api
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}

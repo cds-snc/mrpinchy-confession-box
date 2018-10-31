@@ -3,14 +3,14 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/rewrite-target: /compliance/api
+    traefik.ingress.kubernetes.io/rewrite-target: /compliance/ui
     traefik.ingress.kubernetes.io/preserve-host: "false"
-  name: traefik-ingress-api
+  name: traefik-ingress-ui
 spec:
   rules:
   - http:
       paths:
-      - path: /compliance/api
+      - path: /compliance/ui
         backend:
-          serviceName: compliance-api
-          servicePort: 3000
+          serviceName: compliance-ui
+          servicePort: 8080
