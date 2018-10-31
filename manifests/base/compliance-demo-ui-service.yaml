@@ -7,10 +7,10 @@ metadata:
   name: compliance-ui
 spec:
   ports:
-  - name: 8080-8080
-    port: 8080
+  - name: 4000-4000
+    port: 4000
     protocol: TCP
-    targetPort: 8080
+    targetPort: 4000
   selector:
     app: compliance-ui
   type: ClusterIP
