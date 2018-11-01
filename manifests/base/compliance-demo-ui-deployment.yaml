@@ -25,12 +25,10 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         env:
-          - name: PREACT_APP_API_URL
+          - name: API_URL
             value: /compliance/api
           - name: PORT
             value: "4000"
-          - name: PREACT_APP_PUBLIC_PATH
-            value: /compliance/ui/
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler

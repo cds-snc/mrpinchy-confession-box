@@ -10,7 +10,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /compliance/ui
+      - path: /compliance
         backend:
           serviceName: compliance-ui
           servicePort: 4000
