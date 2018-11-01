@@ -55,23 +55,15 @@ class Form extends Component {
 
     // validate form input, checking for content, script tags, profanity & actual words
     if (!event.target.value) {
-      // eslint-disable-next-line no-console
-      console.error("Confession is empty")
       this.setState({ formError: "empty-message" })
     } else if (
       event.target.value.includes("<script>") ||
       event.target.value.includes("</script>")
     ) {
-      // eslint-disable-next-line no-console
-      console.error("Confession contains script tags")
       this.setState({ formError: "script-tag" })
     } else if (event.target.value.match(/^\d+$/)) {
-      // eslint-disable-next-line no-console
-      console.error("Confession only contains numbers")
       this.setState({ formError: "no-words" })
     } else if (filter.isProfane(event.target.value)) {
-      // eslint-disable-next-line no-console
-      console.error("Detected profanity in typing")
       this.setState({ formError: "profanity" })
     } else {
       this.setState({ formError: "none" })
@@ -85,8 +77,6 @@ class Form extends Component {
         query: { error: this.state.formError },
       })
     } else {
-      // eslint-disable-next-line no-console
-      console.log("Confession submitted: " + this.state.value)
       Router.push({
         pathname: "/thankyou",
       })
