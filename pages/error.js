@@ -38,6 +38,27 @@ class Error extends Component {
     return { error }
   }
 
+  componentDidMount() {
+    this.logComment(`Error in confession: ${this.props.error}`)
+  }
+
+  logComment = comment => {
+    let payload = {
+      comment: comment,
+    }
+
+    fetch("/submitComment", {
+      body: JSON.stringify(payload),
+      cache: "no-cache",
+      headers: {
+        "content-type": "application/json",
+      },
+      method: "POST",
+    }).catch(err => {
+      throw err
+    })
+  }
+
   errorMessage() {
     if (this.props.error == "script-tag")
       return "Hmm... that message doesn't seem right. Did you use a weird symbol? How about you try again 😞 🦀 "
@@ -46,14 +67,12 @@ class Error extends Component {
     if (this.props.error == "profanity")
       return "Why are you swearing at me?? I'm just a friendly crustacean! How about you try again 😞 🦀 "
     if (this.props.error == "no-words")
-      return "Are you sure you wrote me a message, because it looks just like numbers to me. How about you try again 😞 🦀 "
+      return "I'm a crab, not a mathematician!!!! How about you try again? 😞 🦀 "
 
     return "Hmm, it looks like something went wrong. How about you try again 😞 🦀 "
   }
 
   handleClick() {
-    //eslint-disable-next-line no-console
-    console.log("Clicked the 'Try again' button")
     Router.push({
       pathname: "/",
     })
