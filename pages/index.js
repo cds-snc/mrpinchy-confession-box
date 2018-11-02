@@ -13,7 +13,7 @@ injectGlobal`
       font-family: SourceSans, Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #212121;
+      background: lightblue;
     }
 
 `
@@ -24,7 +24,7 @@ class App extends Component {
       <div
         css={`
           width: 100%;
-          height: 100%;
+          height: 100vh;
           background-color: lightblue;
         `}
       >
@@ -33,7 +33,7 @@ class App extends Component {
             href="https://fonts.googleapis.com/css?family=Lobster+Two"
             rel="stylesheet"
           />
-          <title>Mr Pinchy's confession box</title>
+          <title>Mr Pinchy&apos;s confession box</title>
         </Head>
         <div
           css={`

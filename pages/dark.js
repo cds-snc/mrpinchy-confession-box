@@ -26,7 +26,7 @@ class App extends Component {
         css={`
           background-color: #212121;
           width: 100%;
-          height: 100%;
+          height: 100vh;
         `}
       >
         <Head>
@@ -34,7 +34,7 @@ class App extends Component {
             href="https://fonts.googleapis.com/css?family=Lobster+Two"
             rel="stylesheet"
           />
-          <title>Mr. Pinchy's (dark) confession box</title>
+          <title>Mr. Pinchy&apos;s (dark) confession box</title>
         </Head>
         <div
           css={`

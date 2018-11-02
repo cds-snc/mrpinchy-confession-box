@@ -23,7 +23,6 @@ const formStyle = css`
     float: center;
     font-size: 1rem;
     margin-top: 2rem;
-    margin-bottom: 5rem;
   }
 
   textarea {
