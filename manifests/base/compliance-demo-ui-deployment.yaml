@@ -26,7 +26,7 @@ spec:
         terminationMessagePolicy: File
         env:
           - name: API_URL
-            value: /compliance/api
+            value: "http://compliance-api:3000"
           - name: PORT
             value: "3000"
           - name: PUBLIC_PATH
