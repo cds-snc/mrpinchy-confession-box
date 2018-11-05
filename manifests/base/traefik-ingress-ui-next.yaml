@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/rewrite-target: /_next
+    traefik.ingress.kubernetes.io/preserve-host: "false"
+  name: traefik-ingress-ui-next
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /_next
+        backend:
+          serviceName: compliance-ui
+          servicePort: 3000
