@@ -28,7 +28,9 @@ spec:
           - name: API_URL
             value: /compliance/api
           - name: PORT
-            value: "4000"
+            value: "3000"
+          - name: PUBLIC_PATH
+            value: "/compliance"
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
