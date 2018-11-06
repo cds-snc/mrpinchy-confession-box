@@ -13,7 +13,7 @@ steps:
   - name: "gcr.io/cds-snc/compliance-api-demo:$REVISION_ID"
     id: test
     entrypoint: /bin/sh
-    args: ["-c", "yarn test"]
+    args: ["-c", "cd /app && yarn test"]
     waitFor:
       - push
   - name: "gcr.io/cloud-builders/docker"
