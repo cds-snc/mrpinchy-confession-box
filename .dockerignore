@@ -1,6 +1,6 @@
 **
 
-!/__tests_/**
+!/__tests__/**
 !/pages/**
 !/components/**
 !/static/**
