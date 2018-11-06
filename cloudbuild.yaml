@@ -16,4 +16,4 @@ secrets:
   - kmsKeyName: projects/cds-snc/locations/global/keyRings/cds-keys/cryptoKeys/platform
     secretEnv:
       DOCKER_USERNAME: CiQADcHLVsVgh3MLCKbzApGWlwEexSI2QeRfk2sLd4dWiaIO0FgSNACMLY+dy5FsylxVpjGphcUlzx6dSsh65liJemmJAul1vNkeYO8IjO8BHl7/duQNoMJhJto=
-      DOCKER_PASSWORD: CiQADcHLVv9z9TTyW3ZdNzmp/RSfOOx/IVtQJkdiGW9OEjCRdnwSLwCMLY+dMLdOQ+L5yJwXYRexz0BITYX/BrapjC1iyksLXZtZEdM6KcI+pPJi5r7j
+      DOCKER_PASSWORD: CiQADcHLVrNicvBVdCtT4fOem1BB4emGXf/vCgB/6NIikAbXYHoSMQCMLY+dIxPG60OWFb9hVWNWTNXUQLN/q35Uf1onCnu/2ShCURyhi0R/z9Aq6bV2Ljs=
