@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
     "start": "next start",
     "lint": "node_modules/eslint/bin/eslint.js pages components __tests__",
@@ -23,8 +23,10 @@
   "license": "ISC",
   "dependencies": {
     "bad-words": "^3.0.0",
+    "body-parser": "^1.18.3",
     "emotion": "^9.2.12",
     "emotion-server": "^9.2.12",
+    "express": "^4.16.4",
     "next": "^7.0.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
@@ -37,6 +39,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-plugin-emotion": "^9.2.11",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.7.0",

@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { injectGlobal } from "emotion"
 import { css } from "react-emotion"
 import Head from "next/head"
 import Header from "../components/header"
@@ -7,13 +6,6 @@ import Container from "../components/container"
 import MrPinchy from "../components/mrpinchy"
 import SpeechBubble from "../components/speechbubble"
 import Router from "next/router"
-
-injectGlobal`
-    body {
-        background-color: lightblue;
-        font-family: SourceSans, Helvetica, Arial, sans-serif;
-    }
-`
 
 const buttonStyle = css`
   background-color: #ef762f;
@@ -32,6 +24,27 @@ class ThankYou extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
+  componentDidMount() {
+    this.logComment("Submission sent successfully")
+  }
+
+  logComment = comment => {
+    let payload = {
+      comment: comment,
+    }
+
+    fetch("/submitComment", {
+      body: JSON.stringify(payload),
+      cache: "no-cache",
+      headers: {
+        "content-type": "application/json",
+      },
+      method: "POST",
+    }).catch(err => {
+      throw err
+    })
+  }
+
   handleClick() {
     // eslint-disable-next-line no-console
     console.log("Clicked the 'Tell Mr. Pinchy more' button")
@@ -42,7 +55,13 @@ class ThankYou extends Component {
 
   render() {
     return (
-      <div>
+      <div
+        css={`
+          width: 100%;
+          height: 100vh;
+          background-color: lightblue;
+        `}
+      >
         <Head>
           <link
             href="https://fonts.googleapis.com/css?family=Lobster+Two"

@@ -46,9 +46,43 @@ spec:
             - name: DESCRIPTION
               value: 'The Kubernetes API Server Pod logs all API requests that make infrastructure changes.'
             - name: SATISFIES
-              value: 'AU-2'
+              value: 'AU-2,AU-3'
             - name: NEEDLE
               value: 'kube-apiserver'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+        - image: 'cdssnc/pod-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'pod-check-compliance-au-8-fluentd'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/pod-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Infrastructure'
+            - name: DESCRIPTION
+              value: 'The cluter uses Fluentd for logging.'
+            - name: SATISFIES
+              value: 'AU-8,AU-8 (1)'
+            - name: NEEDLE
+              value: 'fluentd'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+        - image: 'cdssnc/url-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'url-check-compliance-cm-2'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/url-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Source code'
+            - name: DESCRIPTION
+              value: 'The application uses kubernetes configuration files to manage its state.'
+            - name: SATISFIES
+              value: 'CM-2,CM-6 (1)'
+            - name: URL
+              value: 'https://raw.githubusercontent.com/cds-snc/mrpinchy-confession-box/master/manifests/base/kustomization.yaml'
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks
@@ -81,6 +115,23 @@ spec:
               value: 'The application performs code review on its pull requests.'
             - name: SATISFIES
               value: 'SA-11 (4)'
+            - name: REPO_URL
+              value: 'https://github.com/cds-snc/mrpinchy-confession-box'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+        - image: 'cdssnc/github-snyk-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'github-snyk-check-compliance-si-5'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/github-snyk-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Infrastructure'
+            - name: DESCRIPTION
+              value: 'The application uses snyk to detect package vulnerabilities.'
+            - name: SATISFIES
+              value: 'SI-5'
             - name: REPO_URL
               value: 'https://github.com/cds-snc/mrpinchy-confession-box'
           volumeMounts:
