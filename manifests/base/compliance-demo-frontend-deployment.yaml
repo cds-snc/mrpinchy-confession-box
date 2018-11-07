@@ -8,16 +8,10 @@ metadata:
   namespace: default
 spec:
   progressDeadlineSeconds: 600
-  replicas: 4
   revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: compliance-api-demo
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
   template:
     metadata:
       labels:
