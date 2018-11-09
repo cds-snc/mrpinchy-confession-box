@@ -156,7 +156,8 @@ spec:
               mountPath: /checks
       volumes:
       - name: compliance-checks
-        emptyDir: {}
+        hostPath:
+          path: /checks
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
