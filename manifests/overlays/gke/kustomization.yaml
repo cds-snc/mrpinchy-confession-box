@@ -1,0 +1,8 @@
+bases:
+  - ../../base
+resources:
+  # - admin-cluster-role-binding.yaml
+  - traefik-ingress-service.yaml
+  - certs-claim.yaml
+patches:
+  - traefik-ingress-controller-deployment.yaml

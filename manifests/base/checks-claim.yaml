@@ -2,9 +2,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    io.kompose.service: certs-claim
-  name: certs-claim
-  namespace: kube-system
+    io.kompose.service: checks-claim
+  name: checks-claim
 spec:
   accessModes:
   - ReadWriteOnce
