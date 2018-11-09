@@ -156,8 +156,8 @@ spec:
               mountPath: /checks
       volumes:
       - name: compliance-checks
-        hostPath:
-          path: /checks
+        persistentVolumeClaim:
+          claimName: checks-claim 
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler

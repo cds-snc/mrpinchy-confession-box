@@ -1,4 +1,5 @@
 resources:
+  - checks-claim.yaml
   - compliance-demo-api-deployment.yaml
   - compliance-demo-api-service.yaml
   - compliance-demo-frontend-deployment.yaml

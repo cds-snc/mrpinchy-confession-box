@@ -2,4 +2,3 @@ bases:
   - ../../base
 resources:
   - traefik-ingress-service.yaml
-  - pv-claim.yaml
