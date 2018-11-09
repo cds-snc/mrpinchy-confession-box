@@ -4,7 +4,7 @@ metadata:
   name: traefik-ingress-service
   namespace: kube-system
 spec:
-  loadBalancerIP: 35.203.27.228
+  loadBalancerIP: 35.208.16.124
   ports:
   - name: http
     port: 80
