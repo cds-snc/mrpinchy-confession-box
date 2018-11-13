@@ -69,6 +69,23 @@ spec:
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks
+        - image: 'cdssnc/pod-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'pod-check-compliance-kube-hunter'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/pod-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Infrastructure'
+            - name: DESCRIPTION
+              value: 'The cluster uses Kube hunter for vulnerability scanning.'
+            - name: SATISFIES
+              value: 'CA-2 (2),RA-5,SA-11,SA-15 (4)'
+            - name: NEEDLE
+              value: 'kube-hunter'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
         - image: 'cdssnc/url-check-compliance:latest'
           imagePullPolicy: Always
           name: 'url-check-compliance-cm-2'
