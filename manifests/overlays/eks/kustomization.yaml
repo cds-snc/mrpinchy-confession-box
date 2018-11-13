@@ -1,0 +1,11 @@
+bases:
+  - ../../base
+resources:
+  - storage-class-default.yaml
+  - fluentd-cloudwatch-configmap.yaml
+  - fluentd-cloudwatch-daemonset-template.yaml
+  - traefik-ingress-service.yaml
+  - certs-claim.yaml
+patches:
+  - checks-claim.yaml
+  - traefik-ingress-controller-deployment.yaml
