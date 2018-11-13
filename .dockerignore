@@ -5,4 +5,5 @@
 !/static/**
 !.babelrc
 !package.json
+!server.js
 !yarn.lock
