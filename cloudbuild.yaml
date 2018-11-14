@@ -5,6 +5,7 @@ steps:
     args: ['test']
   - name: "cdssnc/seekret"
     entrypoint: "bash"
+    args:
     - '-c'
     - |
       /seekret dir --recursive /workspace
