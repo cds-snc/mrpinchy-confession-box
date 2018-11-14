@@ -4,8 +4,8 @@ steps:
   - name: "gcr.io/cloud-builders/yarn"
     args: ['test']
   - name: "cdssnc/seekret"
-    entrypoint: "seekret"
-    args: ["/workspace"]
+    entrypoint: "bash"
+    args: ["-c", "dir", "--recursive", "/workspace"]
   - name: "gcr.io/cloud-builders/docker"
     id: push_docker_hub
     entrypoint: "bash"
