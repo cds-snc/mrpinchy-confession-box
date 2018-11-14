@@ -1,14 +1,14 @@
 steps:
-  - name: 'gcr.io/cloud-builders/yarn'
-    args: ['install']
-  - name: "gcr.io/cloud-builders/yarn"
-    args: ['test']
   - name: "cdssnc/seekret"
     entrypoint: "bash"
     args:
     - '-c'
     - |
       /seekret dir --recursive /workspace
+  - name: 'gcr.io/cloud-builders/yarn'
+    args: ['install']
+  - name: "gcr.io/cloud-builders/yarn"
+    args: ['test']
   - name: "gcr.io/cloud-builders/docker"
     id: push_docker_hub
     entrypoint: "bash"
