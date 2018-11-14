@@ -5,7 +5,7 @@ steps:
     args: ['test']
   - name: "cdssnc/seekret"
     entrypoint: "bash"
-    args: ["-c", "seekret", "dir", "--recursive", "/workspace"]
+    args: ["-c", "/seekret", "dir", "--recursive", "/workspace"]
   - name: "gcr.io/cloud-builders/docker"
     id: push_docker_hub
     entrypoint: "bash"
