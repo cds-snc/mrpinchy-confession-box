@@ -61,7 +61,7 @@ spec:
             - name: COMPONENT
               value: 'Infrastructure'
             - name: DESCRIPTION
-              value: 'The cluter uses Fluentd for logging.'
+              value: 'The cluster uses Fluentd for logging.'
             - name: SATISFIES
               value: 'AU-8,AU-8 (1),SI-11'
             - name: NEEDLE
