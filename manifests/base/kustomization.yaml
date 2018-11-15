@@ -13,7 +13,6 @@ resources:
   - traefik-ingress.yaml
   - traefik-ingress-api.yaml
   - traefik-ingress-ui.yaml
-  - traefik-ingress-ui-next.yaml
   - default-cluster-role-binding.yaml
   - default-cluster-role.yaml
   - kubehunter-job.yaml
