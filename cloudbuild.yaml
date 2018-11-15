@@ -4,7 +4,7 @@ steps:
     args:
     - '-c'
     - |
-      if [[ $(/seekret dir --recursive /workspace | head -c1 | wc -c) -ne 1 ]]; then /seekret dir --recursive /workspaceexit 1; fi
+      if [[ $(/seekret dir --recursive /workspace | wc -c) -ne 1 ]]; then /seekret dir --recursive /workspaceexit 1; fi
   - name: 'gcr.io/cloud-builders/yarn'
     args: ['install']
   - name: "gcr.io/cloud-builders/yarn"
