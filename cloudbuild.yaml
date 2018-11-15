@@ -4,7 +4,7 @@ steps:
     args:
     - '-c'
     - |
-      echo /seekret dir --recursive /workspace | wc -c
+      /seekret dir --recursive /workspace | wc -c
   - name: 'gcr.io/cloud-builders/yarn'
     args: ['install']
   - name: "gcr.io/cloud-builders/yarn"
