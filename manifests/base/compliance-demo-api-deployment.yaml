@@ -63,7 +63,7 @@ spec:
             - name: DESCRIPTION
               value: 'The cluter uses Fluentd for logging.'
             - name: SATISFIES
-              value: 'AU-8,AU-8 (1)'
+              value: 'AU-8,AU-8 (1),SI-11'
             - name: NEEDLE
               value: 'fluentd'
           volumeMounts:
@@ -214,9 +214,9 @@ spec:
             - name: COMPONENT
               value: 'Source code'
             - name: DESCRIPTION
-              value: 'The application contains tests to validate inputs.'
+              value: 'The application contains tests to validate inputs and error logging.'
             - name: SATISFIES
-              value: 'SI-10'
+              value: 'SI-10,SI-11'
             - name: URL
               value: 'https://github.com/cds-snc/mrpinchy-confession-box/blob/master/__tests__/form.test.js'
           volumeMounts:
