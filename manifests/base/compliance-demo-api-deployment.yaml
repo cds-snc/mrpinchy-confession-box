@@ -44,7 +44,7 @@ spec:
             - name: COMPONENT
               value: 'Policy'
             - name: DESCRIPTION
-              value: 'The application follow Account Management policy as laid out in documentation.'
+              value: 'The application follows Account Management policy as laid out in documentation.'
             - name: SATISFIES
               value: 'AC-2'
             - name: URL
@@ -63,9 +63,26 @@ spec:
             - name: DESCRIPTION
               value: 'The AWS Node Pod logs all API requests that make infrastructure changes.'
             - name: SATISFIES
-              value: 'AU-2,AU-3'
+              value: 'AU-2,AU-3,AU-3 (1)'
             - name: NEEDLE
               value: 'aws-node'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+        - image: 'cdssnc/url-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'url-check-compliance-au-6'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/url-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Policy'
+            - name: DESCRIPTION
+              value: 'The organization does audit reports and reviews in line with written policy.'
+            - name: SATISFIES
+              value: 'AU-6'
+            - name: URL
+              value: 'https://github.com/cds-snc/compliance-policy-documents/audit-review.md'
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks
@@ -112,7 +129,7 @@ spec:
             - name: COMPONENT
               value: 'Policy'
             - name: DESCRIPTION
-              value: 'The application is subject to penetration testing as laid out in documentation.'
+              value: 'The application undergoes penetration testing as specified in documentation.'
             - name: SATISFIES
               value: 'CA-8,CA-8 (1)'
             - name: URL
@@ -236,6 +253,40 @@ spec:
               value: 'SA-11,SA-11 (4)'
             - name: REPO_URL
               value: 'https://github.com/cds-snc/mrpinchy-confession-box'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+        - image: 'cdssnc/pod-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'pod-check-compliance-sa-12-kritis'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/pod-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Infrastructure'
+            - name: DESCRIPTION
+              value: 'The cluster uses Kritis to block deployment of vulnerable container images.'
+            - name: SATISFIES
+              value: 'SA-12'
+            - name: NEEDLE
+              value: 'kritis'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
+        - image: 'cdssnc/pod-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'pod-check-compliance-sc-7-istio'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/pod-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Infrastructure'
+            - name: DESCRIPTION
+              value: 'The cluster uses Istio to monitor incoming and outgoing data and encrypt communication between pods.'
+            - name: SATISFIES
+              value: 'SC-7'
+            - name: NEEDLE
+              value: 'istio'
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks
