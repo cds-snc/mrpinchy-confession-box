@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: restriction-policy
+spec:
+  privileged: false
+  runAsUser:
+    rule: RunAsAny
+  seLinux:
+    rule: RunAsAny
+  fsGroup:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  volumes:
+  - '*'
+  hostPorts:
+  - min: 80
+    max: 80
+  - min: 443
+    max: 443
+  - min: 3000
+    max: 3000

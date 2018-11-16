@@ -1,4 +1,5 @@
 resources:
+  - pod-security-policy.yaml
   - checks-claim.yaml
   - compliance-demo-api-deployment.yaml
   - compliance-demo-api-service.yaml
