@@ -24,6 +24,13 @@ spec:
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+        volumeMounts:
+          - name: compliance-checks
+            mountPath: /checks
+      volumes:
+      - name: compliance-checks
+        persistentVolumeClaim:
+          claimName: checks-claim
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
