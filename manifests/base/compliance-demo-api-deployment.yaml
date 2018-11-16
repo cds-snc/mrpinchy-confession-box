@@ -44,11 +44,11 @@ spec:
             - name: COMPONENT
               value: 'Infrastructure'
             - name: DESCRIPTION
-              value: 'The Kubernetes API Server Pod logs all API requests that make infrastructure changes.'
+              value: 'The AWS Node Pod logs all API requests that make infrastructure changes.'
             - name: SATISFIES
               value: 'AU-2,AU-3'
             - name: NEEDLE
-              value: 'kube-apiserver'
+              value: 'aws-node'
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks
@@ -242,7 +242,7 @@ spec:
       volumes:
       - name: compliance-checks
         persistentVolumeClaim:
-          claimName: checks-claim 
+          claimName: checks-claim
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
