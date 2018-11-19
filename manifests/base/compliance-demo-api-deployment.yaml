@@ -103,6 +103,23 @@ spec:
           volumeMounts:
             - name: compliance-checks
               mountPath: /checks
+        - image: 'cdssnc/roles-check-compliance:latest'
+          imagePullPolicy: Always
+          name: 'roles-check-compliance-ac3-ac6'
+          env:
+            - name: ORIGIN
+              value: 'cdssnc/roles-check-compliance:latest'
+            - name: COMPONENT
+              value: 'Infrastructure'
+            - name: DESCRIPTION
+              value: 'The cluster uses appropriate roles to manage API access'
+            - name: SATISFIES
+              value: 'AC-3,AC-6'
+            - name: NEEDLE
+              value: 'system:aws-cloud-provider'
+          volumeMounts:
+            - name: compliance-checks
+              mountPath: /checks
         - image: 'cdssnc/pod-check-compliance:latest'
           imagePullPolicy: Always
           name: 'pod-check-compliance-kube-hunter'
