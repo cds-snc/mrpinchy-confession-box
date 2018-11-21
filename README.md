@@ -1,5 +1,6 @@
 ## Platform Challenge Compliance API Demo (Mr. Pinchy)
 
+[![Compliance UI](https://compliance-ui.herokuapp.com/badge)](https://compliance-ui.herokuapp.com)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2c89a1444129242dc6c5/maintainability)](https://codeclimate.com/github/cds-snc/mrpinchy-confession-box/maintainability)
 [![Known Vulnerabilities](https://snyk.io/test/github/cds-snc/mrpinchy-confession-box/badge.svg)](https://snyk.io/test/github/cds-snc/mrpinchy-confession-box)
 
